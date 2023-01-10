@@ -1,0 +1,95 @@
+#include<iostream>
+#include<cmath>
+using namespace std ;
+class ComplexNumbers
+{
+	public:
+		double realNumber ;
+		double imaginaryNumber ;
+public:
+	ComplexNumbers()
+		{
+			realNumber = imaginaryNumber = 0 ;
+		}
+	ComplexNumbers(double realNumber)
+		{
+			this->realNumber = realNumber ;
+			imaginaryNumber = 0 ;
+		}
+	ComplexNumbers(double realNumber , double imaginaryNumber)
+		{
+			this->realNumber = realNumber ;
+			this->imaginaryNumber = imaginaryNumber ;
+		}
+	ComplexNumbers(const ComplexNumbers & obj)
+		{
+			realNumber = obj.realNumber ;
+			imaginaryNumber = obj.imaginaryNumber ;
+		}
+	void input()
+	{
+        cin >> realNumber;
+        cin >> imaginaryNumber;
+    }	
+    ComplexNumbers operator + (const ComplexNumbers &obj)
+    {
+    	ComplexNumbers temp;
+    	temp.realNumber = realNumber + obj.realNumber;
+    	temp.imaginaryNumber = imaginaryNumber + obj.imaginaryNumber;
+    	return temp;
+	}
+	ComplexNumbers operator - (const ComplexNumbers &obj)
+    {
+    	ComplexNumbers temp;
+    	temp.realNumber = realNumber - obj.realNumber;
+    	temp.imaginaryNumber = imaginaryNumber - obj.imaginaryNumber;
+    	return temp;
+	}
+	ComplexNumbers operator * (const ComplexNumbers &obj)
+    {
+    	ComplexNumbers temp;
+    	temp.realNumber = realNumber * obj.realNumber;
+    	temp.imaginaryNumber = imaginaryNumber * obj.imaginaryNumber;
+    	return temp;
+	}
+	ComplexNumbers operator / (const ComplexNumbers &obj)
+    {
+    	ComplexNumbers temp;
+    	temp.realNumber = realNumber / obj.realNumber;
+    	temp.imaginaryNumber = imaginaryNumber / obj.imaginaryNumber;
+    	return temp;
+	}
+	 void output() 
+	 {
+        if (imaginaryNumber < 0)
+            cout << "Output Complex number: " << realNumber << imaginaryNumber << "i" << endl;
+        else
+            cout << "Output Complex number: " << realNumber << "+" << imaginaryNumber << "i" << endl;
+    }
+};
+
+main()
+{
+	ComplexNumbers c1 , c2 , add , sub , mul , div;
+	
+	cout << "Enter the First Complex Number : ";
+	c1.input();
+	cout << "Enter the Second Complex Number : ";
+	c2.input();
+	
+	cout << "Sum is : ";
+	add = c1 + c2;
+	add.output();
+	
+	cout << "Subtraction is : ";
+	sub = c1 - c2;
+	sub.output();
+	
+	cout << "Multiplication is : ";
+	mul = c1 + c2;
+	mul.output();
+	
+	cout << "Division is : ";
+	div = c1 / c2;
+	div.output();
+}
